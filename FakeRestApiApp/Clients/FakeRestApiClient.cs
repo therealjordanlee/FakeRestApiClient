@@ -10,8 +10,8 @@ namespace FakeRestApiApp.Clients
 {
     public class FakeRestApiClient
     {
-        private const string _baseUrl = "https://fakerestapi.azurewebsites.net";
-        private HttpClient _client;
+        private const string BaseUrl = "https://fakerestapi.azurewebsites.net";
+        private readonly HttpClient _client;
 
         /// <summary>
         /// Initializes a new FakeRestAPI client
@@ -28,7 +28,7 @@ namespace FakeRestApiApp.Clients
         /// </summary>
         public async Task<List<ActivityModel>> GetActivitiesAsync()
         {
-            var url = $"{_baseUrl}/api/Activities";
+            var url = $"{BaseUrl}/api/Activities";
             var activitiesList = await _client.GetStringAsync(url);
             var result = JsonConvert.DeserializeObject<List<ActivityModel>>(activitiesList);
             return result;
@@ -40,7 +40,7 @@ namespace FakeRestApiApp.Clients
         /// <param name="id">The Id of the Activity</param>
         public async Task<ActivityModel> GetActivityAsync(int id)
         {
-            var url = $"{_baseUrl}/api/Activities/{id.ToString()}";
+            var url = $"{BaseUrl}/api/Activities/{id.ToString()}";
             var activity = await _client.GetStringAsync(url);
             var result = JsonConvert.DeserializeObject<ActivityModel>(activity);
             return result;
@@ -52,7 +52,7 @@ namespace FakeRestApiApp.Clients
         /// <param name="activity">Activity to create</param>
         public async Task<HttpResponseMessage> PostActivityAsync(ActivityModel activity)
         {
-            var url = $"{_baseUrl}/api/Activities";
+            var url = $"{BaseUrl}/api/Activities";
             var content = new StringContent(activity.ToString(), Encoding.UTF8, "application/json");
             var result = await _client.PostAsync(url, content);
             return result;
@@ -64,7 +64,7 @@ namespace FakeRestApiApp.Clients
         /// <param name="id">Id of the Activity to delete</param>
         public async Task<HttpResponseMessage> DeleteActivityAsync(int id)
         {
-            var url = $"{_baseUrl}/api/Activities/{id.ToString()}";
+            var url = $"{BaseUrl}/api/Activities/{id.ToString()}";
             var result = await _client.DeleteAsync(url);
             return result;
         }
