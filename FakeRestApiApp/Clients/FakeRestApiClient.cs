@@ -26,6 +26,7 @@ namespace FakeRestApiApp.Clients
         /// <summary>
         /// Returns a list of all Activities
         /// </summary>
+        /// <remarks>See <a href="https://fakerestapi.azurewebsites.net/swagger/ui/index#!/Activities/Activities_Get">Get list of Activities</a></remarks>
         public async Task<List<ActivityModel>> GetActivitiesAsync()
         {
             var url = $"{BaseUrl}/api/Activities";
@@ -38,6 +39,7 @@ namespace FakeRestApiApp.Clients
         /// Returns an Activity based on Id
         /// </summary>
         /// <param name="id">The Id of the Activity</param>
+        /// <remarks>See <a href="https://fakerestapi.azurewebsites.net/swagger/ui/index#!/Activities/Activities_Get_0">Get an Activity</a></remarks>
         public async Task<ActivityModel> GetActivityAsync(int id)
         {
             var url = $"{BaseUrl}/api/Activities/{id.ToString()}";
@@ -50,6 +52,7 @@ namespace FakeRestApiApp.Clients
         /// Creates a new Activity
         /// </summary>
         /// <param name="activity">Activity to create</param>
+        /// <remarks>See <a href="https://fakerestapi.azurewebsites.net/swagger/ui/index#!/Activities/Activities_Post">Create an Activity</a></remarks>
         public async Task<HttpResponseMessage> PostActivityAsync(ActivityModel activity)
         {
             var url = $"{BaseUrl}/api/Activities";
@@ -62,6 +65,7 @@ namespace FakeRestApiApp.Clients
         /// Deletes an Activity based on Id
         /// </summary>
         /// <param name="id">Id of the Activity to delete</param>
+        /// <remarks>See <a href="https://fakerestapi.azurewebsites.net/swagger/ui/index#!/Activities/Activities_Delete">Delete an Activity</a></remarks>
         public async Task<HttpResponseMessage> DeleteActivityAsync(int id)
         {
             var url = $"{BaseUrl}/api/Activities/{id.ToString()}";
